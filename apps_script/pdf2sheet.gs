@@ -1,8 +1,7 @@
-const FOLDER_ID = '11d7mWuOFaSJKcBLAeLjkKk2wK2O-ieTq';         
+const FOLDER_ID = '';         
+const SHEETS_FOLDER_ID = '';
 const BACKEND_URL = 'https://papyraceous-talkatively-jacqulyn.ngrok-free.dev/handle_pdf';
 const PROCESADOS_PROP = 'PDFS_PROCESADOS';
-const SHEETS_FOLDER_ID = '1ZawHkDATQaaKlzxi86jDdDIIW4hQ6JG6'; // carpeta donde crearás los sheets
-
 
 function checkNewPdfs() {
   const folder = DriveApp.getFolderById(FOLDER_ID);
