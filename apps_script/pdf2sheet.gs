@@ -22,7 +22,6 @@ function checkNewPdfs() {
     try {
       Logger.log("Sending PDF to backend: " + file.getName());
       const resp = sendPdfToBackend(file);
-      /*Logger.log("Respuesta del backend: " + resp);*/
       let respObj = JSON.parse(resp);  
       let raw = respObj.parsed_data;
 
