@@ -19,7 +19,7 @@ It provides a simple, low-cost automation pipeline using:
 
 ---
 
-# 📁 Project Structure
+## 📁 Project Structure
 /apps_script
 pdf2sheet.gs # Google Apps Script
 
@@ -29,18 +29,9 @@ requirements.txt # Python dependencies
 
 ---
 
-# 🔧 How to Use
+## 🔧 How to Use
 
-This project has two components:
-
-1. **Apps Script** → Monitors a Drive folder and sends PDFs to the backend  
-2. **Backend** → Extracts text, calls LLM, returns structured data  
-
-Follow the steps below.
-
----
-
-# 1️⃣ Set Up the Apps Script (Drive → Backend → Sheets)
+## 1️⃣ Set Up the Apps Script (Drive → Backend → Sheets)
 
 1. Go to: https://script.google.com/  
 2. Create a new project  
@@ -50,138 +41,61 @@ Follow the steps below.
    ```js
    const FOLDER_ID = '...';        // Drive folder that receives PDFs
    const SHEETS_FOLDER_ID = '...'; // Drive folder for generated spreadsheets
-   const BACKEND_URL = '...';      // URL of FastAPI endpoint (/handle_pdf)```
-  
----
-
-# 🔧 How to Use
-
-This project has two components:
-
-1. **Apps Script** → Monitors a Drive folder and sends PDFs to the backend  
-2. **Backend** → Extracts text, calls LLM, returns structured data  
-
-Follow the steps below.
-
----
-
-# 1️⃣ Set Up the Apps Script (Drive → Backend → Sheets)
-
-1. Go to: https://script.google.com/  
-2. Create a new project  
-3. Paste the contents of `pdf2sheet.gs`  
-4. Fill in the following constants:
-
-   ```js
-   const FOLDER_ID = '...';        // Drive folder that receives PDFs
-   const SHEETS_FOLDER_ID = '...'; // Drive folder for generated spreadsheets
-   const BACKEND_URL = '...';      // URL of FastAPI endpoint (/handle_pdf)
+   const BACKEND_URL = 'https://abc.ngrok-free.dev/handle_pdf';      // URL of FastAPI endpoint (/handle_pdf) (see with ngrok http 8000)
    ```
-
-Use the Drive URL to get folder IDs
-Use ngrok or your cloud server for BACKEND_URL
-
-Set up a trigger:
+5. Set up a trigger:
 Triggers → Add Trigger → Time-driven → Every 5 minutes
 
 Now the script will:
-
 Look for PDFs in FOLDER_ID
-
 Send any new PDF to the backend
-
 Create a spreadsheet in SHEETS_FOLDER_ID
 
-2️⃣ Run the Backend Locally
+## 2️⃣ Run the Backend Locally
 
 Inside /backend:
 
-Install dependencies
+1. Install dependencies
 pip install -r requirements.txt
 
-Set your OpenRouter API key
+2. Set your OpenRouter API key
 export OPENROUTER_API_KEY="your_key_here"
 
-Start the backend
+3. Start the backend
 uvicorn backend:app --host 0.0.0.0 --port 8000
 
-Expose it to the Internet with ngrok
+4. Expose it to the Internet with ngrok
 ngrok http 8000
 
-
-Copy the generated URL (e.g. https://xyz.ngrok-free.app/handle_pdf)
+5. Copy the generated URL (e.g. https://xyz.ngrok-free.app/handle_pdf)
 and paste it into the Apps Script BACKEND_URL.
 
-That’s it — your pipeline is now fully operational.
-3️⃣ Deploy in the Cloud (Optional, Low Cost)
+## 3️⃣ Deploy in the Cloud (Optional, Low Cost)
 
-Cheap, easy hosting providers for FastAPI:
-
-Platform	Notes
-Render.com	Good free tier, easiest deployment
-Railway.app	Cheap and simple
-Fly.io	Free resources available
-Cloud Run (Google)	Extremely cheap for low traffic
-Azure Container Apps	Also cost-efficient
+Easy hosting providers optionsfor FastAPI:
+* Render.com
+* Railway.app
+* Fly.io
+* Cloud Run (Google)
+* Azure Container Apps
 
 You only need:
 
-backend.py
+* backend.py
+* requirements.txt
+* (optional) a Dockerfile
 
-requirements.txt
+## 📬 Summary
 
-(optional) a Dockerfile
+Demo-PDF2Sheet is a clean demonstration of:
 
-✏️ Customizing the Extraction Logic
-Modify the LLM prompt
+* Monitoring a Drive folder
+* Processing PDFs on-the-fly
+* Extracting structured data with a low-cost LLM
+* Auto-generating Google Sheets
 
-Inside backend.py, update the prompt to:
 
-Expect different fields
-
-Use a different schema
-
-Extract other types of documents
-
-The included prompt is designed for shipping invoices, but you can adapt it for:
-
-generic invoices
-
-receipts
-
-bills of lading
-
-contracts
-
-logistics documents
-
-any text-based PDF
-
-Modify the generated Google Sheet
-
-In createSheetFromInvoice() (Apps Script):
-
-Change headers
-
-Change row mapping
-
-Add/remove fields
-
-This allows you to reuse the project for any document pipeline.
-
-📬 Summary
-
-PDF2Sheet is a clean demonstration of:
-
-Monitoring a Drive folder
-
-Processing PDFs on-the-fly
-
-Extracting structured data with a low-cost LLM
-
-Auto-generating Google Sheets
-
-Fast to deploy, easy to modify, cheap to run.
+### This demo project can be easily adapted to process other types of documents by modifying the LLM prompt, selecting a different model, or updating the spreadsheet-generation logic.
 
 
 
