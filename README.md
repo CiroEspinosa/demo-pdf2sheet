@@ -1,3 +1,4 @@
+
 # 📄 PDF2Sheet – Automated Invoice Extraction Demo
 
 **PDF2Sheet** is a lightweight demo that automatically detects *shipping invoice PDFs* in a Google Drive folder, extracts structured information using an **OpenRouter LLM**, and writes the results into a **Google Sheet**.
@@ -43,6 +44,8 @@ requirements.txt # Python dependencies
    const SHEETS_FOLDER_ID = '...'; // Drive folder for generated spreadsheets
    const BACKEND_URL = 'https://abc.ngrok-free.dev/handle_pdf';      // URL of FastAPI endpoint (/handle_pdf) (see with ngrok http 8000)
    ```
+   <img width="643" height="328" alt="image" src="https://github.com/user-attachments/assets/09e699c3-13e7-48d5-925c-a67e1e635430" />
+
 5. Set up a trigger:
 Triggers → Add Trigger → Time-driven → Every 5 minutes
 
@@ -94,8 +97,9 @@ Demo-PDF2Sheet is a clean demonstration of:
 * Extracting structured data with a low-cost LLM
 * Auto-generating Google Sheets
 
-<img width="423" height="378" alt="image" src="https://github.com/user-attachments/assets/2bbd001d-83f7-4df6-a921-830a9721b25d" />
+<img width="400" height="400" alt="image" src="https://github.com/user-attachments/assets/2bbd001d-83f7-4df6-a921-830a9721b25d" />
 
+<img width="400" height="400" alt="image" src="https://github.com/user-attachments/assets/610a1c96-52ad-46d8-95f2-8a719b75c48c" />
 
 ### This demo project can be easily adapted to process other types of documents by modifying the LLM prompt, selecting a different model, or updating the spreadsheet-generation logic.
 
