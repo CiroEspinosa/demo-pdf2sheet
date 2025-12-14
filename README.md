@@ -94,6 +94,8 @@ Demo-PDF2Sheet is a clean demonstration of:
 * Extracting structured data with a low-cost LLM
 * Auto-generating Google Sheets
 
+<img width="423" height="378" alt="image" src="https://github.com/user-attachments/assets/2bbd001d-83f7-4df6-a921-830a9721b25d" />
+
 
 ### This demo project can be easily adapted to process other types of documents by modifying the LLM prompt, selecting a different model, or updating the spreadsheet-generation logic.
 
