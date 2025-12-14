@@ -1,3 +1,4 @@
+<img width="500" height="300" alt="Automatización de facturas con Python" src="https://github.com/user-attachments/assets/d7ec368e-4786-4398-be19-466c664cd17b" />
 
 # 📄 PDF2Sheet – Automated Invoice Extraction Demo
 
